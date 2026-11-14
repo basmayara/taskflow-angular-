@@ -8,7 +8,7 @@ import { FormsModule } from '@angular/forms';
   styleUrl: './header.css',
 })
 export class Header {
-  // Exercise 1
+
   title = 'TaskFlow';
   canDelete = false;
 
@@ -22,7 +22,7 @@ export class Header {
     this.canDelete = false;
   }
 
-  // Titles: you enter them yourself, the list starts empty
+
   titles: string[] = [];
   newTitle = '';
   editIndex: number | null = null;
