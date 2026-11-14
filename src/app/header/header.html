@@ -1,0 +1,67 @@
+<h1>{{ title }}</h1>
+
+<button (click)="rename()">Renommer</button>
+<button [disabled]="!canDelete" (click)="resetTitle()">Supprimer</button>
+
+<hr />
+
+<h2>Mes titres</h2>
+
+<input
+  [(ngModel)]="newTitle"
+  (keyup.enter)="saveTitle()"
+  placeholder="Entrer un titre"
+/>
+
+<button (click)="saveTitle()">
+  {{ editIndex === null ? 'Ajouter' : 'Mettre à jour' }}
+</button>
+
+@if (editIndex !== null) {
+  <button (click)="cancelEdit()">Annuler</button>
+}
+
+<h3>Total : {{ titles.length }} titre(s)</h3>
+
+<ul class="titles">
+  @for (item of titles; track $index; let i = $index, f = $first, l = $last, c = $count) {
+    <li
+      [class.first]="f"
+      [class.last]="l"
+      [class.editing]="i === editIndex"
+    >
+      <span>{{ item }}</span>
+
+      <button (click)="editTitle(i)">Modifier</button>
+      <button [class.danger]="c === 1" (click)="deleteTitle(i)">Supprimer</button>
+    </li>
+  } @empty {
+    <li class="empty">Aucun titre pour le moment.</li>
+  }
+</ul>
+
+@if (titles.length > 0) {
+  <div class="delete-box">
+    <button (click)="deleteFirst()">Supprimer le premier</button>
+    <button (click)="deleteLast()">Supprimer le dernier</button>
+
+    <div class="by-index">
+      <input
+        type="number"
+        min="0"
+        [max]="titles.length - 1"
+        [(ngModel)]="deleteIndex"
+        (input)="errorMessage = ''"
+        (keyup.enter)="deleteByIndex()"
+        [placeholder]="'Index (0 à ' + (titles.length - 1) + ')'"
+      />
+      <button (click)="deleteByIndex()">Supprimer par index</button>
+    </div>
+
+    @if (errorMessage) {
+      <p class="error">{{ errorMessage }}</p>
+    }
+
+    <button class="danger" (click)="clearAll()">Tout supprimer</button>
+  </div>
+}

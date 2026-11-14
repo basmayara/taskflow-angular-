@@ -1,0 +1,34 @@
+<hr />
+
+<h2>Liste des tâches</h2>
+
+<input
+  [(ngModel)]="newTitle"
+  (keyup.enter)="addTask()"
+  placeholder="Entrer une tâche"
+/>
+
+<input type="date" [(ngModel)]="newDate" />
+
+<button [disabled]="!newTitle.trim() || !newDate" (click)="addTask()">
+  Ajouter
+</button>
+
+@if (tasks.length === 0) {
+  <p class="empty">Aucune tâche pour l’instant</p>
+} @else {
+  <ul>
+    @for (task of tasks; track task.id) {
+      <li>
+        <div>Original : {{ task.title }}</div>
+        <div>Majuscules : {{ task.title | uppercase }}</div>
+        <div>Minuscules : {{ task.title | lowercase }}</div>
+        <div>Date (jj/mm/aaaa) : {{ task.dueDate | date:'dd/MM/yyyy' }}</div>
+      </li>
+    }
+  </ul>
+}
+
+<button [disabled]="tasks.length === 0" (click)="clearTasks()">
+  Vider la liste
+</button>

@@ -1,0 +1,97 @@
+h1,
+h2 {
+  font-family: Arial, sans-serif;
+  color: #1e3a8a;
+}
+
+input {
+  padding: 8px;
+  margin-right: 8px;
+  border: 1px solid #94a3b8;
+  border-radius: 6px;
+}
+
+button {
+  padding: 6px 12px;
+  margin-right: 6px;
+  border: none;
+  border-radius: 6px;
+  background: #2563eb;
+  color: white;
+  cursor: pointer;
+}
+
+button:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+}
+
+button.danger {
+  background: #dc2626;
+}
+
+ul.titles {
+  list-style: none;
+  padding-left: 0;
+  max-width: 500px;
+}
+
+li {
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-top: none;
+}
+
+li.first {
+  border-top: 1px solid #e2e8f0;
+  border-radius: 8px 8px 0 0;
+}
+
+li.last {
+  border-radius: 0 0 8px 8px;
+  border-bottom: 2px solid #2563eb;
+}
+
+li.first.last {
+  border-radius: 8px;
+}
+
+li.editing {
+  background: #fef9c3;
+}
+
+li span {
+  display: inline-block;
+  min-width: 150px;
+}
+
+.empty {
+  color: #64748b;
+  font-style: italic;
+  border: none;
+}
+
+.delete-box {
+  max-width: 500px;
+  margin-top: 16px;
+  padding: 12px;
+  border: 1px dashed #94a3b8;
+  border-radius: 8px;
+}
+
+.delete-box button {
+  margin-bottom: 8px;
+}
+
+.by-index {
+  margin: 8px 0;
+}
+
+.by-index input {
+  width: 150px;
+}
+
+.error {
+  color: #dc2626;
+  margin: 4px 0 8px;
+}
